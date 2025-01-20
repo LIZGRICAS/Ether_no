@@ -126,7 +126,7 @@ namespace Enemys.DoubleDragon
             }
             else
             {
-                animator.SetTrigger("Terremoto");  // Activamos la animación de terremoto (cabeza 2)
+                animator.SetTrigger("Earthquake");  // Activamos la animación de terremoto (cabeza 2)
             }
         }
 

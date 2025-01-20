@@ -15,6 +15,7 @@ namespace Enemys.DoubleDragon
 
         // Referencia al Animator para manejar las animaciones del Double_Dragon
         public Animator animator;
+        private CameraShake cameraShake;
 
         // Enum de los estados del enemigo
         private enum State { Idle, Attack, Die }
@@ -29,6 +30,8 @@ namespace Enemys.DoubleDragon
             _player = GameObject.FindGameObjectWithTag("Player").transform;
             _currentState = State.Idle;
             timeNextAttack = timeBetweenAttacks; // Inicializamos el tiempo para el siguiente ataque
+            animator = GetComponent<Animator>();
+            cameraShake = Camera.main.GetComponent<CameraShake>(); // Asume que la cámara principal tiene el script CameraShake
         }
 
         private void Update()
@@ -128,5 +131,12 @@ namespace Enemys.DoubleDragon
         }
 
         #endregion
+        
+        // Este es el evento de animación que se llama durante la animación
+        // Asegúrate de que este método sea el que se llame en el Animation Event
+        public void OnAttackShake()
+        {
+            cameraShake.StartShake(0.1f, 0.5f);  // Magnitud y duración del temblor
+        }
     }
 }
